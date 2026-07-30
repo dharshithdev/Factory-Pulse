@@ -20,7 +20,3 @@ const startServer = async () => {
 };
 
 startServer();
-
-logger.info("Info test");
-logger.error("Error test");
-logger.warn("Warn test");

@@ -13,18 +13,42 @@ const createMachine = async (machineData) => {
 };
 
 const getAllMachines = async () => {
-    return await machineRepository.findAll();
+    const machine =  await machineRepository.findAll();
+
+    if (!machine) {
+        throw new Error("Machine not found.");
+    }
+
+    return machine;
 };
 
 const getMachineById = async (id) => {
-    return await machineRepository.findById(id);
+    const machine = await machineRepository.findById(id);
+
+    if (!machine) {
+        throw new Error("Machine not found.");
+    }
+
+    return machine;
 };
 
 const updateMachine = async (id, updateData) => {
+    const machine = await machineRepository.findById(id);
+
+    if (!machine) {
+        throw new Error("Machine not found.");
+    }
+
     return await machineRepository.updateById(id, updateData);
 };
 
 const deleteMachine = async (id) => {
+    const machine = await machineRepository.findById(id);
+
+    if (!machine) {
+        throw new Error("Machine not found.");
+    }
+    
     return await machineRepository.deleteById(id);
 };
 

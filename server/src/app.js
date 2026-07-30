@@ -4,6 +4,8 @@ const cors = require("cors");
 const helmet = require("helmet");
 const errorHandler = require("./middlewares/errorHandler");
 
+const machineRoutes = require("./routes/machine.route");
+
 const app = express();
 
 // Security Middleware
@@ -18,16 +20,8 @@ app.use(express.json());
 // Parse URL Encoded Data
 app.use(express.urlencoded({ extended: true }));
 
-// Health Check
-app.get("/api/v1/health", (req, res) => {
-    res.status(200).json({
-        success: true,
-        message: "FactoryPulse API is running"
-    });
-});
-
+app.use("/api/v1/machines", machineRoutes);
 
 app.use(errorHandler);
-
 
 module.exports = app;
