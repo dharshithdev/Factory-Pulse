@@ -39,6 +39,10 @@ const updateMachine = async (id, updateData) => {
         throw new Error("Machine not found.");
     }
 
+    if (updateData.machineCode) {
+        throw new Error("Machine code cannot be updated.");
+    }
+
     return await machineRepository.updateById(id, updateData);
 };
 
@@ -48,7 +52,7 @@ const deleteMachine = async (id) => {
     if (!machine) {
         throw new Error("Machine not found.");
     }
-    
+
     return await machineRepository.deleteById(id);
 };
 
