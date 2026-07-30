@@ -1,0 +1,11 @@
+module.exports = {
+    INTERVAL: 30000,
+
+    TEMPERATURE_VARIATION: 2,
+
+    PRESSURE_VARIATION: 1,
+
+    RPM_VARIATION: 50,
+
+    POWER_VARIATION: 0.3
+};

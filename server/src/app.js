@@ -5,6 +5,8 @@ const helmet = require("helmet");
 const errorHandler = require("./middlewares/errorHandler");
 
 const machineRoutes = require("./routes/machine.route");
+const sensorReadingRoutes = require("./routes/sensorReading.routes");
+
 
 const app = express();
 
@@ -21,6 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/machines", machineRoutes);
+app.use("/api/v1/sensor-readings", sensorReadingRoutes);
 
 app.use(errorHandler);
 

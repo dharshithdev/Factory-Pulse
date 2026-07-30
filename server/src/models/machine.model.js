@@ -66,7 +66,13 @@ const machineSchema = new mongoose.Schema(
                 default: 0
             },
 
-            timestamp: {
+            status: {
+                type: String,
+                enum: ["Running", "Idle", "Stopped", "Maintenance"],
+                default: "Stopped"
+            },
+
+            lastUpdated: {
                 type: Date,
                 default: null
             }
