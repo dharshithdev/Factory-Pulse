@@ -27,6 +27,18 @@ const updateById = async (id, updateData) => {
     );
 };
 
+const updateCurrentMetrics = async (machineId, currentMetrics) => {
+    return await Machine.findByIdAndUpdate(
+        machineId,
+        {
+            currentMetrics
+        },
+        {
+            returnDocument: "after"
+        }
+    );
+};
+
 const deleteById = async (id) => {
     return await Machine.findByIdAndDelete(id);
 };
@@ -37,5 +49,6 @@ module.exports = {
     findById,
     findByMachineCode,
     updateById,
+    updateCurrentMetrics,
     deleteById
 };

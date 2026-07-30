@@ -1,11 +1,29 @@
+
+
 module.exports = {
     INTERVAL: 30000,
 
-    TEMPERATURE_VARIATION: 2,
+    API_URL: "http://localhost:5000/api/v1/sensor-readings",
 
-    PRESSURE_VARIATION: 1,
+    STATUS: {
+        RUNNING: "Running",
+        IDLE: "Idle",
+        STOPPED: "Stopped",
+        MAINTENANCE: "Maintenance"
+    },
 
-    RPM_VARIATION: 50,
+    STATUS_PROBABILITY: {
+        RUNNING: 90,
+        IDLE: 5,
+        STOPPED: 3,
+        MAINTENANCE: 2
+    },
 
-    POWER_VARIATION: 0.3
+    VARIATION: {
+        TEMPERATURE: 2,
+        PRESSURE: 1,
+        RPM: 50,
+        POWER: 0.3,
+        PRODUCTION: 5
+    }
 };
