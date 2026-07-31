@@ -1,17 +1,17 @@
 const evaluateRPMRule = (machine, reading) => {
 
-    if (reading.rpm >= machine.maxRPM) {
+    if (reading.rpm <= machine.maxRPM) {
         return null;
     }
 
     return {
         type: "RPM",
         severity: "WARNING",
-        title: "Low RPM",
-        message: `${machine.machineCode} RPM dropped below expected value.`,
+        title: "High RPM",
+        message: `${machine.machineCode} exceeded maximum RPM.`,
         value: reading.rpm,
         threshold: machine.maxRPM
     };
-};
+}    
 
 module.exports = evaluateRPMRule;

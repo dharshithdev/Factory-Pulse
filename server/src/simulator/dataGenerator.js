@@ -40,41 +40,27 @@ const generateSensorData = (machine) => {
                 current.temperature === 0
                     ? randomBetween(60, 70)
                     : current.temperature +
-                      randomBetween(
-                          -config.VARIATION.TEMPERATURE,
-                          config.VARIATION.TEMPERATURE
-                      );
+                      randomBetween(-config.VARIATION.TEMPERATURE, config.VARIATION.TEMPERATURE);
 
             pressure =
                 current.pressure === 0
                     ? randomBetween(28, 35)
                     : current.pressure +
-                      randomBetween(
-                          -config.VARIATION.PRESSURE,
-                          config.VARIATION.PRESSURE
-                      );
+                      randomBetween(-config.VARIATION.PRESSURE, config.VARIATION.PRESSURE);
 
             rpm =
                 current.rpm === 0
                     ? randomBetween(1400, 1500)
                     : current.rpm +
-                      randomBetween(
-                          -config.VARIATION.RPM,
-                          config.VARIATION.RPM
-                      );
+                      randomBetween(-config.VARIATION.RPM, config.VARIATION.RPM);
 
             power =
                 current.power === 0
                     ? randomBetween(4.5, 6)
                     : current.power +
-                      randomBetween(
-                          -config.VARIATION.POWER,
-                          config.VARIATION.POWER
-                      );
+                      randomBetween(-config.VARIATION.POWER, config.VARIATION.POWER);
 
-            productionCount += Math.floor(
-                randomBetween(1, config.VARIATION.PRODUCTION)
-            );
+            productionCount += Math.floor(randomBetween(1, config.VARIATION.PRODUCTION));
 
             break;
 

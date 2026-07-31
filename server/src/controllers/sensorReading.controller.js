@@ -1,13 +1,13 @@
 const sensorReadingService = require("../services/sensorReading.service");
 
-const createSensorReading = async (req, res, next) => {
+const createSensorReading = async (req, res, next) => { 
     try {
         const sensorReading = await sensorReadingService.createSensorReading(req.body);
 
         res.status(201).json({
             success: true,
             message: "Sensor reading recorded successfully.",
-            data: sensorReading
+            data: sensorReading 
         });
 
     } catch (error) {

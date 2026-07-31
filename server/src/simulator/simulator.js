@@ -11,7 +11,6 @@ const runSimulator = async () => {
         for (const machine of machines) {
 
             const sensorData = generateSensorData(machine);
-
             await axios.post(config.API_URL, sensorData);
 
             console.log(`${machine.machineCode} -> Temp: ${sensorData.temperature}°C`);

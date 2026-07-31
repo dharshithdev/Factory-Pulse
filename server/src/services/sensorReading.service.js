@@ -1,5 +1,6 @@
 const sensorReadingRepository = require("../repositories/sensorReading.repository");
 const machineRepository = require("../repositories/machine.repository");
+const evaluateRules = require("../rule-engine/index");
 
 const createSensorReading = async (readingData) => {
 
@@ -23,6 +24,13 @@ const createSensorReading = async (readingData) => {
             lastUpdated: new Date()
         }
     );
+
+    const alerts = evaluateRules(machine, readingData);
+
+    if (alerts.length > 0) {
+        console.log("Alerts Generated:");
+        console.table(alerts);
+    }
 
     return sensorReading;
 };

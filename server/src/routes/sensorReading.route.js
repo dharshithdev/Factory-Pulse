@@ -5,7 +5,7 @@ const validate = require("../middlewares/validate");
 const validateObjectId = require("../middlewares/validateObjectId");
 
 const sensorReadingController = require("../controllers/sensorReading.controller");
-const {createSensorReadingSchema} = require("../validators/sensorReading.validator");
+const {createSensorReadingSchema} = require("../validators/sensorReading.validator"); 
 
 router.post("/", validate(createSensorReadingSchema), sensorReadingController.createSensorReading);
 
