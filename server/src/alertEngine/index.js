@@ -8,6 +8,9 @@ const processAlerts = async (machine, sensorReading, triggeredAlerts) => {
         machine._id
     );
 
+    console.log("Triggered:", triggeredAlerts.map(a => a.type));
+    console.log("Active:", activeAlerts.map(a => a.type));
+
     // Convert triggered alerts into a Set for quick lookup
     const triggeredTypes = new Set(
         triggeredAlerts.map(alert => alert.type)
@@ -36,6 +39,17 @@ const processAlerts = async (machine, sensorReading, triggeredAlerts) => {
         }
 
     }
+
+    for (const activeAlert of activeAlerts) {
+
+    if (!triggeredTypes.has(activeAlert.type)) {
+
+        console.log("Resolving:", activeAlert.type);
+
+        await alertRepository.resolveAlert(activeAlert._id);
+    }
+
+}
 
 };
 

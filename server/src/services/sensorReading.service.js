@@ -30,13 +30,14 @@ const createSensorReading = async (readingData) => {
     const alerts = evaluateRules(machine, readingData);
 
     if (alerts.length > 0) {
-        console.log("Alerts Generated:");
+        console.log("----------------------------------------");
+        console.log("Alerts Generated");
+    }
         await alertEngine.processAlerts(
         machine,
         sensorReading,
         alerts
       );
-    }
 
     return sensorReading;
 };

@@ -13,7 +13,10 @@ const runSimulator = async () => {
             const sensorData = generateSensorData(machine);
             await axios.post(config.API_URL, sensorData);
 
-            console.log(`${machine.machineCode} -> Temp: ${sensorData.temperature}°C`);
+            console.log(`${machine.machineCode} -> Temperature : ${sensorData.temperature}°C`);
+            console.log(`${machine.machineCode} -> Pressure    : ${sensorData.pressure} PSI`);
+            console.log(`${machine.machineCode} -> RPM         : ${sensorData.rpm}`);
+            console.log(`${machine.machineCode} -> Power       : ${sensorData.power} Watt`);
         }
 
     } catch (error) {
