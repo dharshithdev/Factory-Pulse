@@ -68,10 +68,33 @@ const deleteMachine = async (req, res, next) => {
     }
 };
 
+const toggleMachineStatus = async (req, res, next) => {
+
+    try {
+
+        const machine =
+            await machineService.toggleMachineStatus(
+                req.params.id
+            );
+
+        res.status(200).json({
+            success: true,
+            data: machine
+        });
+
+    } catch (error) {
+
+        next(error);
+
+    }
+
+};
+
 module.exports = {
     createMachine,
     getAllMachines,
     getMachineById,
     updateMachine,
-    deleteMachine
+    deleteMachine,
+    toggleMachineStatus
 };

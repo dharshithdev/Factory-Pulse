@@ -72,7 +72,6 @@ const generateSensorData = (machine) => {
             break;
 
         case config.STATUS.STOPPED:
-
             temperature = Math.max(current.temperature - 2, 30);
             pressure = 0;
             rpm = 0;

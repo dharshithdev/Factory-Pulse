@@ -17,4 +17,6 @@ router.put("/:id", validateObjectId, validate(updateMachineSchema), machineContr
 
 router.delete("/:id", validateObjectId, machineController.deleteMachine);
 
+router.patch("/:id/toggle", validateObjectId, machineController.toggleMachineStatus);
+
 module.exports = router;

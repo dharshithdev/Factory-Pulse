@@ -56,10 +56,19 @@ const deleteMachine = async (id) => {
     return await machineRepository.deleteById(id);
 };
 
+const toggleMachineStatus = async (id) => {
+    const machine = await machineRepository.toggleMachineStatus(id);
+    if (!machine) {
+        throw new Error("Machine not found.");
+    }
+    return machine;
+};
+
 module.exports = {
     createMachine,
     getAllMachines,
     getMachineById,
     updateMachine,
-    deleteMachine
+    deleteMachine,
+    toggleMachineStatus
 };

@@ -39,6 +39,20 @@ const updateCurrentMetrics = async (machineId, currentMetrics) => {
     );
 };
 
+const toggleMachineStatus = async (id) => {
+    const machine = await Machine.findById(id);
+    if (!machine) {
+        return null;
+    }
+    machine.isActive = !machine.isActive;
+        if (!machine.isActive) {
+        machine.currentMetrics.status = "Stopped";
+    }
+    
+    await machine.save();
+    return machine;
+};
+
 const deleteById = async (id) => {
     return await Machine.findByIdAndDelete(id);
 };
@@ -50,5 +64,6 @@ module.exports = {
     findByMachineCode,
     updateById,
     updateCurrentMetrics,
-    deleteById
+    deleteById,
+    toggleMachineStatus
 };
