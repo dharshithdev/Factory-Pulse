@@ -1,6 +1,8 @@
 const sensorReadingRepository = require("../repositories/sensorReading.repository");
 const machineRepository = require("../repositories/machine.repository");
 const evaluateRules = require("../rule-engine/index");
+const alertService = require("./alert.services");
+const alertEngine = require("../alertEngine");
 
 const createSensorReading = async (readingData) => {
 
@@ -29,7 +31,11 @@ const createSensorReading = async (readingData) => {
 
     if (alerts.length > 0) {
         console.log("Alerts Generated:");
-        console.table(alerts);
+        await alertEngine.processAlerts(
+        machine,
+        sensorReading,
+        alerts
+      );
     }
 
     return sensorReading;
