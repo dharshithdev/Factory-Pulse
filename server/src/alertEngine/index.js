@@ -1,5 +1,5 @@
 const alertRepository = require("../repositories/alert.repository");
-const alertService = require("../services/alert.service");
+const alertService = require("../services/alert.services");
 
 const processAlerts = async (machine, sensorReading, triggeredAlerts) => {
 

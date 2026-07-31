@@ -6,7 +6,7 @@ const errorHandler = require("./middlewares/errorHandler");
 
 const machineRoutes = require("./routes/machine.route");
 const sensorReadingRoutes = require("./routes/sensorReading.route");
-
+const alertRoutes = require("./routes/alert.route");
 
 const app = express();
 
@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/v1/machines", machineRoutes);
 app.use("/api/v1/sensor-readings", sensorReadingRoutes);
+app.use("/api/v1/alerts", alertRoutes);
 
 app.use(errorHandler);
 

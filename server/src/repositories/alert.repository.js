@@ -61,11 +61,24 @@ const findActiveAlertsByMachine = async (machineId) => {
 
 };
 
+const acknowledge = async (id) => {
+    return await Alert.findByIdAndUpdate(
+        id,
+        {
+            isAcknowledged: true
+        },
+        {
+            returnDocument: "after"
+        }
+    );
+};
+
 module.exports = {
     create,
     findAll,
     findActiveAlert,
     updateLastSeen,
     resolveAlert,
-    findActiveAlertsByMachine
+    findActiveAlertsByMachine,
+    acknowledge
 };
