@@ -1,106 +1,66 @@
-import { NavLink } from "react-router-dom";
-import { MdFactory } from "react-icons/md";
-import { HiSignal } from "react-icons/hi2";
-import { RiDashboardFill } from "react-icons/ri";
-import { FaCogs } from "react-icons/fa";
+import { FiBell, FiSearch } from "react-icons/fi";
 
 function Navbar() {
 
-    const activeClass =
-        "text-white bg-blue-600";
-
-    const inactiveClass =
-        "text-slate-300 hover:text-white hover:bg-slate-700";
-
     return (
 
-        <header className="sticky top-0 z-50 bg-[#111827]/90 backdrop-blur-md border-b border-slate-700">
+        <header className="h-20 bg-[#111827] border-b border-slate-700 flex items-center justify-between px-8">
 
-            <div className="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+            <div>
 
-                <div className="flex items-center gap-10">
+                <h1 className="text-3xl font-bold text-white">
 
-                    <div className="flex items-center gap-4">
+                    Factory Dashboard
 
-                        <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                </h1>
 
-                            <MdFactory
-                                size={28}
-                                className="text-white"
-                            />
+                <p className="text-slate-400 text-sm mt-1">
 
-                        </div>
+                    Monitor production and machine health in real time.
 
-                        <div>
+                </p>
 
-                            <h1 className="text-2xl font-bold text-white">
+            </div>
 
-                                FactoryPulse
+            <div className="flex items-center gap-5">
 
-                            </h1>
+                <button className="relative text-slate-400 hover:text-white transition">
 
-                            <p className="text-sm text-slate-400">
+                    <FiSearch size={22} />
 
-                                Smart Manufacturing Monitoring Platform
+                </button>
 
-                            </p>
+                <button className="relative text-slate-400 hover:text-white transition">
 
-                        </div>
+                    <FiBell size={22} />
+
+                    <span className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-red-500"></span>
+
+                </button>
+
+                <div className="flex items-center gap-3">
+
+                    <div className="w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center text-white font-bold">
+
+                        A
 
                     </div>
 
-                    <nav className="flex items-center gap-3">
+                    <div>
 
-                        <NavLink
-                            to="/dashboard"
-                            className={({ isActive }) =>
-                                `flex items-center gap-2 px-4 py-2 rounded-xl transition ${
-                                    isActive
-                                        ? activeClass
-                                        : inactiveClass
-                                }`
-                            }
-                        >
+                        <p className="text-white font-semibold">
 
-                            <RiDashboardFill />
+                            Admin
 
-                            Dashboard
+                        </p>
 
-                        </NavLink>
+                        <p className="text-slate-400 text-xs">
 
-                        <NavLink
-                            to="/machines"
-                            className={({ isActive }) =>
-                                `flex items-center gap-2 px-4 py-2 rounded-xl transition ${
-                                    isActive
-                                        ? activeClass
-                                        : inactiveClass
-                                }`
-                            }
-                        >
+                            Factory Manager
 
-                            <FaCogs />
+                        </p>
 
-                            Machines
-
-                        </NavLink>
-
-                    </nav>
-
-                </div>
-
-                <div className="flex items-center gap-3 px-4 py-2 rounded-full bg-green-500/15 border border-green-500/30">
-
-                    <HiSignal
-                        className="text-green-400 animate-pulse"
-                        size={18}
-                    />
-
-                    <span className="text-green-400 font-semibold">
-
-                        LIVE
-
-                    </span>
+                    </div>
 
                 </div>
 
