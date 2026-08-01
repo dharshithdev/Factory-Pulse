@@ -38,7 +38,7 @@ function Sidebar() {
         {
             name: "Dashboard",
             icon: <FiGrid size={20} />,
-            path: "/",
+            path: "/dashboard",
             description: "Overview & metrics"
         },
         {
@@ -46,12 +46,6 @@ function Sidebar() {
             icon: <FiCpu size={20} />,
             path: "/machines",
             description: "Manage equipment"
-        },
-        {
-            name: "Production",
-            icon: <FiActivity size={20} />,
-            path: "/production",
-            description: "Production lines"
         },
         {
             name: "Analytics",
@@ -64,6 +58,12 @@ function Sidebar() {
             icon: <FiAlertTriangle size={20} />,
             path: "/alerts",
             description: "System notifications"
+        },
+        {
+            name: "Production",
+            icon: <FiActivity size={20} />,
+            path: "/production",
+            description: "Production lines"
         },
         {
             name: "System",

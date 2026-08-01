@@ -22,7 +22,7 @@ function Login() {
     try {
       const data = await loginService({ username, password });
       login(data.admin, data.token);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       setError(error.response?.data?.message || "Login failed. Please check your credentials.");
     } finally {

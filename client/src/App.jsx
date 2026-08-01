@@ -39,12 +39,12 @@ function App() {
             />
 
             <Route
-                path="/home"
+                path="/"
                 element={<Home />}
             />
 
             <Route
-                path="/"
+                path="/dashboard"
                 element={
                     <ProtectedRoute>
                         <Dashboard />
