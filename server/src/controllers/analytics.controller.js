@@ -1,4 +1,5 @@
 const analyticsService = require("../services/analytics.services");
+const { stringify } = require("csv-stringify/sync");
 
 const getOverview = async (req, res, next) => {
 
@@ -95,10 +96,34 @@ const getMachineUtilization = async (req, res, next) => {
 
 };
 
+const exportAnalytics = async (req, res, next) => {
+    try {
+        const data = await analyticsService.exportAnalytics();
+        const csv = stringify(data, {
+            header: true,
+            columns: [
+                { key: "machineCode", header: "Machine Code" },
+                { key: "status", header: "Status" },
+                { key: "temperature", header: "Temperature (°C)" },
+                { key: "pressure", header: "Pressure (PSI)" },
+                { key: "rpm", header: "RPM" },
+                { key: "power", header: "Power (kW)" },
+                { key: "productionCount", header: "Production Count" }
+            ]
+        });
+        res.setHeader("Content-Type", "text/csv");
+        res.setHeader("Content-Disposition", "attachment; filename=factorypulse-analytics.csv");
+        res.status(200).send(csv);
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     getOverview,
     getProductionTrend,
     getTemperatureTrend,
     getAlertAnalytics,
-    getMachineUtilization
+    getMachineUtilization,
+    exportAnalytics
 };

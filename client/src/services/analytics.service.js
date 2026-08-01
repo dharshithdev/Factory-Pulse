@@ -24,3 +24,10 @@ export const getUtilization = async () => {
     const response = await api.get("/analytics/utilization");
     return response.data.data;
 };
+
+export const exportAnalytics = async () => {
+    const response = await api.get("/analytics/export", {
+        responseType: "blob"
+    });
+    return response.data;
+};

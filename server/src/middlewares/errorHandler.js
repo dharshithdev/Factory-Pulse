@@ -1,9 +1,9 @@
 const logger = require("../config/logger");
 
 const errorHandler = (err, req, res, next) => {
-    console.log("🔥 Error Handler Executed");
+    console.log("Error Occured : ");
 
-    logger.error("Error Handler Executed");
+    logger.error("Error Occured : ");
     logger.error(err.message);
 
     res.status(err.statusCode || 500).json({

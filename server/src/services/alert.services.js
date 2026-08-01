@@ -1,5 +1,6 @@
 const alertRepository = require("../repositories/alert.repository");
 const { getIO } = require("../config/socket");
+const Machine = require("../models/machine.model");
 
 const processAlert = async (machine, sensorReading, alertData) => {
 
@@ -42,5 +43,5 @@ module.exports = {
     processAlert,
     getAllAlerts,
     getAlertsByMachine,
-    acknowledgeAlert
+    acknowledgeAlert,
 };

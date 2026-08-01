@@ -5,6 +5,7 @@ import ProductionChart from "../components/analytics/ProductionChart";
 import TemperatureChart from "../components/analytics/TemperatureChart";
 import AlertCharts from "../components/analytics/AlertCharts";
 import UtilizationChart from "../components/analytics/UtilizationChart";
+import { exportAnalytics } from "../services/analytics.service";
 
 import {
     getOverview,
@@ -54,6 +55,22 @@ function Analytics() {
 
     };
 
+    const handleExport = async () => {
+    try {
+        const blob = await exportAnalytics();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "factorypulse-analytics.csv";
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        window.URL.revokeObjectURL(url);
+    } catch (error) {
+        console.error(error);
+    }
+};
+
     useEffect(() => {
 
         loadAnalytics();
@@ -84,21 +101,34 @@ function Analytics() {
 
             <div className="space-y-8">
 
-                <div>
+            <div className="flex items-center justify-between">
 
-                    <h1 className="text-4xl font-bold text-white">
+    <div>
 
-                        Analytics
+        <h1 className="text-4xl font-bold text-white">
 
-                    </h1>
+            Analytics
 
-                    <p className="text-slate-400 mt-2">
+        </h1>
 
-                        Production insights and factory performance.
+        <p className="text-slate-400 mt-2">
 
-                    </p>
+            Production insights and factory performance.
 
-                </div>
+        </p>
+
+    </div>
+
+    <button
+        onClick={handleExport}
+        className="bg-green-600 hover:bg-green-700 text-white px-5 py-3 rounded-xl transition"
+    >
+
+        Export CSV
+
+    </button>
+
+</div>
 
                 <OverviewCards data={overview}/>
 

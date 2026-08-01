@@ -28,4 +28,6 @@ router.get(
     analyticsController.getMachineUtilization
 );
 
+router.get("/export", analyticsController.exportAnalytics);
+
 module.exports = router;
