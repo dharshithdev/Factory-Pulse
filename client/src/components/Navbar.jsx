@@ -1,6 +1,29 @@
 import { FiBell, FiSearch } from "react-icons/fi";
+import { useLocation } from "react-router-dom";
 
 function Navbar() {
+
+    const location = useLocation();
+
+    const pageDetails = {
+        "/": {
+            title: "Dashboard",
+            subtitle: "Monitor production and machine health in real time."
+        },
+        "/machines": {
+            title: "Machines",
+            subtitle: "Manage machines and configure threshold values."
+        },
+        "/analytics": {
+            title: "Analytics",
+            subtitle: "Analyze production trends and factory performance."
+        }
+    };
+
+    const currentPage = pageDetails[location.pathname] || {
+        title: "FactoryPulse",
+        subtitle: "Smart Manufacturing Platform"
+    };
 
     return (
 
@@ -10,13 +33,13 @@ function Navbar() {
 
                 <h1 className="text-3xl font-bold text-white">
 
-                    Factory Dashboard
+                    {currentPage.title}
 
                 </h1>
 
                 <p className="text-slate-400 text-sm mt-1">
 
-                    Monitor production and machine health in real time.
+                    {currentPage.subtitle}
 
                 </p>
 
@@ -24,7 +47,7 @@ function Navbar() {
 
             <div className="flex items-center gap-5">
 
-                <button className="relative text-slate-400 hover:text-white transition">
+                <button className="text-slate-400 hover:text-white transition">
 
                     <FiSearch size={22} />
 

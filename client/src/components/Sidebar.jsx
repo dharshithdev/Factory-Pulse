@@ -4,7 +4,8 @@ import {
     FiMenu,
     FiChevronLeft,
     FiGrid,
-    FiSettings
+    FiSettings,
+    FiBell
 } from "react-icons/fi";
 import { PiFactoryFill } from "react-icons/pi";
 import { MdOutlineAnalytics } from "react-icons/md";
@@ -39,6 +40,11 @@ function Sidebar() {
             path: "/analytics"
         },
         {
+            name: "Alerts",
+            icon: <FiBell size={22} />,
+            path: "/alerts"
+        },
+                {
             name: "Settings",
             icon: <FiSettings size={22} />,
             path: "/settings"
