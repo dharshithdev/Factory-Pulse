@@ -44,16 +44,21 @@ const createSensorReading = async (readingData) => {
     return sensorReading;
 };
 
-const getReadingsByMachine = async (machineId) => {
-    return await sensorReadingRepository.findByMachine(machineId);
-};
+const getReadingsByMachine = async (machineId, limit) => {
+    return await sensorReadingRepository.findByMachine(machineId, limit);
+}
 
 const getLatestReading = async (machineId) => {
     return await sensorReadingRepository.findLatestByMachine(machineId);
 };
 
+const getMachineHistory = async (machineId, limit) => {
+    return await sensorReadingRepository.findByMachine(machineId);
+};
+
 module.exports = {
     createSensorReading,
     getReadingsByMachine,
-    getLatestReading
+    getLatestReading,
+    getMachineHistory
 };

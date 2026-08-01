@@ -9,8 +9,8 @@ const {createSensorReadingSchema} = require("../validators/sensorReading.validat
 
 router.post("/", validate(createSensorReadingSchema), sensorReadingController.createSensorReading);
 
-router.get("/machine/:machineId", validateObjectId, sensorReadingController.getReadingsByMachine);
+router.get("/machine/:machineId", validateObjectId("machineId"), sensorReadingController.getReadingsByMachine);
 
-router.get("/machine/:machineId/latest", validateObjectId, sensorReadingController.getLatestReading);
+router.get("/machine/:machineId/latest", validateObjectId("machineId"), sensorReadingController.getLatestReading);
 
-module.exports = router;
+module.exports = router; 

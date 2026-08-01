@@ -58,7 +58,7 @@ function Sidebar() {
         >
             <div className="h-20 border-b border-slate-700 flex items-center justify-between px-5">
                 <div className="flex items-center gap-3 overflow-hidden">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-400 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to from-blue-500 to-cyan-400 flex items-center justify-center">
                         <PiFactoryFill
                             className="text-white"
                             size={28}

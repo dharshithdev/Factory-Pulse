@@ -10,10 +10,11 @@ const findLatestByMachine = async (machineId) => {
         .sort({ createdAt: -1 });
 };
 
-const findByMachine = async (machineId) => {
+const findByMachine = async (machineId, limit = 100) => {
     return await SensorReading
         .find({ machine: machineId })
-        .sort({ createdAt: -1 });
+        .sort({ createdAt: -1 })
+        .limit(limit);
 };
 
 const findByDateRange = async (machineId, startDate, endDate) => {

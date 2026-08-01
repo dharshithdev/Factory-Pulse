@@ -84,7 +84,7 @@ function Dashboard() {
 
                     </div>
 
-                    <div className="bg-[#1E293B] border border-slate-700 rounded-2xl px-6 py-4 min-w-[220px]">
+                    <div className="bg-[#1E293B] border border-slate-700 rounded-2xl px-6 py-4 min-w-55">
 
                         <div className="flex justify-between mb-2">
 

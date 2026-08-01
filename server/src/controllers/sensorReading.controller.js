@@ -16,8 +16,13 @@ const createSensorReading = async (req, res, next) => {
 };
 
 const getReadingsByMachine = async (req, res, next) => {
+
     try {
-        const readings = await sensorReadingService.getReadingsByMachine(req.params.machineId);
+        const limit = Number(req.query.limit) || 100;
+        const readings = await sensorReadingService.getReadingsByMachine(
+            req.params.machineId,
+            limit
+        );
 
         res.status(200).json({
             success: true,
@@ -51,8 +56,26 @@ const getLatestReading = async (req, res, next) => {
     }
 };
 
+const getMachineHistory = async (req, res, next) => {
+
+    try {
+        const readings = await sensorReadingService.getMachineHistory(
+            req.params.machineId, limit
+        );
+
+        res.status(200).json({
+            success: true,
+            data: readings
+        });
+
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     createSensorReading,
     getReadingsByMachine,
-    getLatestReading
+    getLatestReading,
+    getMachineHistory
 };
