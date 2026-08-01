@@ -1,10 +1,11 @@
-import { FaEdit, FaPowerOff, FaTrash } from "react-icons/fa";
+import { FaEdit, FaPowerOff, FaTrash, FaHistory } from "react-icons/fa";
 
 function MachineTable({
     machines,
     onEdit,
     onToggle,
-    onDelete
+    onDelete,
+    onHistory
 }) {
     const getStatusBadge = (status) => {
 
@@ -181,6 +182,13 @@ function MachineTable({
             className="bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-lg transition"
         >
             <FaEdit />
+        </button>
+
+        <button
+            onClick={() => onHistory(machine)}
+            className="bg-slate-600 hover:bg-slate-700 text-white p-2 rounded-lg transition"
+        >
+            <FaHistory />
         </button>
 
         <button

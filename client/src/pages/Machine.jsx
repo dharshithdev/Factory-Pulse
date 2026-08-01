@@ -5,6 +5,7 @@ import MachineTable from "../components/machines/MachineTable";
 import MachineModal from "../components/machines/MachineModal";
 import {getMachines, toggleMachineStatus, deleteMachine} from "../services/machine.services";
 import socket from "../socket/socket";
+import HistoryModal from "../components/machines/HistoryModel";
 
 function Machines() {
 
@@ -12,6 +13,7 @@ function Machines() {
     const [loading, setLoading] = useState(true);
     const [selectedMachine, setSelectedMachine] = useState(null);
     const [showModal, setShowModal] = useState(false);
+    const [showHistoryModal, setShowHistoryModal] = useState(false);
 
     const loadMachines = async () => {
 
@@ -31,6 +33,15 @@ function Machines() {
         }
 
     };
+    const handleHistory = (machine) => {
+    setSelectedMachine(machine);
+    setShowHistoryModal(true);
+};
+
+const closeHistoryModal = () => {
+    setSelectedMachine(null);
+    setShowHistoryModal(false);
+};
 
     useEffect(() => {
     loadMachines();
@@ -172,6 +183,7 @@ const handleDeleteMachine = async (id) => {
                                 onEdit={handleEditMachine}
                                 onToggle={handleToggleMachine}
                                 onDelete={handleDeleteMachine}
+                                onHistory={handleHistory}
                             />
 
                     }
@@ -191,7 +203,14 @@ const handleDeleteMachine = async (id) => {
                 />
 
             }
-
+            {
+    showHistoryModal && selectedMachine && (
+        <HistoryModal
+            machine={selectedMachine}
+            onClose={closeHistoryModal}
+        />
+    )
+}
         </MainLayout>
 
     );
