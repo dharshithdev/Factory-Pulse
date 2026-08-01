@@ -46,7 +46,9 @@ const processAlerts = async (machine, sensorReading, triggeredAlerts) => {
 
         console.log("Resolving:", activeAlert.type);
 
-        await alertRepository.resolveAlert(activeAlert._id);
+        const resolvedAlert = await alertRepository.resolveAlert(activeAlert._id);
+
+        getIO().emit("alertResolved", resolvedAlert);
     }
 
 }

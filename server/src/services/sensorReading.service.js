@@ -3,6 +3,7 @@ const machineRepository = require("../repositories/machine.repository");
 const evaluateRules = require("../rule-engine/index");
 const alertService = require("./alert.services");
 const alertEngine = require("../alertEngine");
+const { getIO } = require("../config/socket");
 
 const createSensorReading = async (readingData) => {
 
@@ -14,7 +15,7 @@ const createSensorReading = async (readingData) => {
 
     const sensorReading = await sensorReadingRepository.create(readingData);
 
-    await machineRepository.updateCurrentMetrics(
+    const updatedMachine = await machineRepository.updateCurrentMetrics(
         readingData.machine,
         {
             temperature: readingData.temperature,
@@ -26,6 +27,7 @@ const createSensorReading = async (readingData) => {
             lastUpdated: new Date()
         }
     );
+    getIO().emit("machineUpdated", updatedMachine);
 
     const alerts = evaluateRules(machine, readingData);
 

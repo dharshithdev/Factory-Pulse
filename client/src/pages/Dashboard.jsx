@@ -6,6 +6,7 @@ import StatCard from "../components/StatCard";
 import MachineCard from "../components/MachineCard";
 import AlertTable from "../components/AlertTable";
 import { getDashboard } from "../services/dashboard.services";
+import socket from "../socket/socket";
 
 function Dashboard() {
     const [dashboard, setDashboard] = useState(null);
@@ -25,12 +26,15 @@ function Dashboard() {
     useEffect(() => {
         loadDashboard();
 
-        const interval = setInterval(() => {
+        socket.on("machineUpdated", () => {
             loadDashboard();
-        }, 30000);
+        });
 
-        return () => clearInterval(interval);
-    }, []);
+        return () => {
+            socket.off("machineUpdated");
+        };
+
+    },[]);
 
     const factoryHealth = useMemo(() => {
         if (!dashboard) return 100;

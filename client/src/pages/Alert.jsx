@@ -4,6 +4,7 @@ import { getAlerts } from "../services/alert.service";
 import AlertStats from "../components/alerts/AlertStats";
 import AlertFilter from "../components/alerts/AlertFilter";
 import AlertTable from "../components/alerts/AlertTable";
+import socket from "../socket/socket";
 
 function Alerts() {
 
@@ -34,9 +35,46 @@ function Alerts() {
 
     useEffect(() => {
 
-        loadAlerts();
+    loadAlerts();
 
-    }, []);
+    socket.on("alertCreated", (newAlert) => {
+
+        setAlerts((previousAlerts) => [
+
+            newAlert,
+
+            ...previousAlerts
+
+        ]);
+
+    });
+
+    socket.on("alertResolved", (resolvedAlert) => {
+
+        setAlerts((previousAlerts) =>
+
+            previousAlerts.map((alert) =>
+
+                alert._id === resolvedAlert._id
+
+                    ? resolvedAlert
+
+                    : alert
+
+            )
+
+        );
+
+    });
+
+    return () => {
+
+        socket.off("alertCreated");
+        socket.off("alertResolved");
+
+    };
+
+}, []);
 
     const filteredAlerts = alerts.filter((alert) => {
 

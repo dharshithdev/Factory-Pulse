@@ -3,11 +3,8 @@ import { FaPlus } from "react-icons/fa";
 import MainLayout from "../layouts/MainLayout";
 import MachineTable from "../components/machines/MachineTable";
 import MachineModal from "../components/machines/MachineModal";
-import {
-    getMachines,
-    toggleMachineStatus,
-    deleteMachine
-} from "../services/machine.services";
+import {getMachines, toggleMachineStatus, deleteMachine} from "../services/machine.services";
+import socket from "../socket/socket";
 
 function Machines() {
 
@@ -36,10 +33,23 @@ function Machines() {
     };
 
     useEffect(() => {
+    loadMachines();
 
-        loadMachines();
+    socket.on("machineUpdated", (updatedMachine) => {
+        setMachines((previousMachines) =>
+            previousMachines.map((machine) =>
+                machine._id === updatedMachine._id
+                    ? updatedMachine
+                    : machine
+            )
+        );
+    });
 
-    }, []);
+    return () => {
+        socket.off("machineUpdated");
+    };
+
+}, []);
 
     const handleAddMachine = () => {
 
