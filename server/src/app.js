@@ -8,6 +8,7 @@ const machineRoutes = require("./routes/machine.route");
 const sensorReadingRoutes = require("./routes/sensorReading.route");
 const alertRoutes = require("./routes/alert.route");
 const dashboardRoutes = require("./routes/dashboard.route");
+const analyticsRoutes = require("./routes/analytics.route");
 
 const app = express();
 
@@ -27,6 +28,7 @@ app.use("/api/v1/machines", machineRoutes);
 app.use("/api/v1/sensor-readings", sensorReadingRoutes);
 app.use("/api/v1/alerts", alertRoutes);
 app.use("/api/v1/dashboard", dashboardRoutes);
+app.use("/api/v1/analytics", analyticsRoutes);
 
 app.use(errorHandler);
 
