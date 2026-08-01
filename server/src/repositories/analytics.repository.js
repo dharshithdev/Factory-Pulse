@@ -74,7 +74,127 @@ const getProductionTrend = async () => {
 
 };
 
+const getTemperatureTrend = async () => {
+
+    return await SensorReading.aggregate([
+
+        {
+            $sort: {
+                createdAt: 1
+            }
+        },
+
+        {
+            $project: {
+
+                _id: 0,
+
+                time: {
+                    $dateToString: {
+                        format: "%H:%M",
+                        date: "$createdAt"
+                    }
+                },
+
+                temperature: "$temperature"
+
+            }
+
+        },
+
+        {
+            $limit: 30
+        }
+
+    ]);
+
+};
+
+const getAlertAnalytics = async () => {
+
+    const severity = await Alert.aggregate([
+
+        {
+            $group: {
+                _id: "$severity",
+                value: {
+                    $sum: 1
+                }
+            }
+        },
+
+        {
+            $project: {
+                _id: 0,
+                name: "$_id",
+                value: 1
+            }
+        }
+
+    ]);
+
+    const types = await Alert.aggregate([
+
+        {
+            $group: {
+                _id: "$type",
+                count: {
+                    $sum: 1
+                }
+            }
+        },
+
+        {
+            $project: {
+                _id: 0,
+                type: "$_id",
+                count: 1
+            }
+        }
+
+    ]);
+
+    return {
+        severity,
+        types
+    };
+
+};
+
+const getMachineUtilization = async () => {
+
+    const machines = await Machine.find().sort({
+        machineCode: 1
+    });
+
+    return machines.map((machine) => {
+
+        const utilization = Math.min(
+            (
+                machine.currentMetrics.productionCount /
+                machine.maxProductionPerMinute
+            ) * 100,
+            100
+        );
+
+        return {
+
+            machine: machine.machineCode,
+
+            utilization: Number(
+                utilization.toFixed(1)
+            )
+
+        };
+
+    });
+
+};
+
 module.exports = {
     getOverview,
-    getProductionTrend
+    getProductionTrend,
+    getTemperatureTrend,
+    getAlertAnalytics,
+    getMachineUtilization
 };

@@ -38,7 +38,67 @@ const getProductionTrend = async (req, res, next) => {
 
 };
 
+const getTemperatureTrend = async (req, res, next) => {
+
+    try {
+
+        const temperature = await analyticsService.getTemperatureTrend();
+
+        res.status(200).json({
+            success: true,
+            data: temperature
+        });
+
+    } catch (error) {
+
+        next(error);
+
+    }
+
+};
+
+const getAlertAnalytics = async (req, res, next) => {
+
+    try {
+
+        const analytics = await analyticsService.getAlertAnalytics();
+
+        res.status(200).json({
+            success: true,
+            data: analytics
+        });
+
+    } catch (error) {
+
+        next(error);
+
+    }
+
+};
+
+const getMachineUtilization = async (req, res, next) => {
+
+    try {
+
+        const utilization = await analyticsService.getMachineUtilization();
+
+        res.status(200).json({
+            success: true,
+            data: utilization
+        });
+
+    } catch (error) {
+
+        next(error);
+
+    }
+
+};
+
 module.exports = {
     getOverview,
-    getProductionTrend
+    getProductionTrend,
+    getTemperatureTrend,
+    getAlertAnalytics,
+    getMachineUtilization
 };

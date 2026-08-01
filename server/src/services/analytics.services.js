@@ -8,7 +8,22 @@ const getProductionTrend = async () => {
     return await analyticsRepository.getProductionTrend();
 };
 
+const getTemperatureTrend = async () => {
+    return await analyticsRepository.getTemperatureTrend();
+};
+
+const getAlertAnalytics = async () => {
+    return await analyticsRepository.getAlertAnalytics();
+};
+
+const getMachineUtilization = async () => {
+    return await analyticsRepository.getMachineUtilization();
+};
+
 module.exports = {
     getOverview,
-    getProductionTrend
+    getProductionTrend,
+    getTemperatureTrend,
+    getAlertAnalytics,
+    getMachineUtilization
 };

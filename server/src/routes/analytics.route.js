@@ -13,4 +13,19 @@ router.get(
     analyticsController.getProductionTrend
 );
 
+router.get(
+    "/temperature",
+    analyticsController.getTemperatureTrend
+);
+
+router.get(
+    "/alerts",
+    analyticsController.getAlertAnalytics
+);
+
+router.get(
+    "/utilization",
+    analyticsController.getMachineUtilization
+);
+
 module.exports = router;
