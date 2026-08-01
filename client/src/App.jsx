@@ -7,6 +7,8 @@ import Alerts from "./pages/Alert";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import socket from "./socket/socket";
+import Home from "./pages/Home";
+
 
 function App() {
 
@@ -34,6 +36,11 @@ function App() {
             <Route
                 path="/login"
                 element={<Login />}
+            />
+
+            <Route
+                path="/home"
+                element={<Home />}
             />
 
             <Route
