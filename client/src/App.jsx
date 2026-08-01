@@ -8,7 +8,7 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import socket from "./socket/socket";
 import Home from "./pages/Home";
-
+import NotFound from "./pages/404";
 
 function App() {
 
@@ -81,7 +81,7 @@ function App() {
 
             <Route
                 path="*"
-                element={<Navigate to="/" replace />}
+                element={<NotFound />}
             />
 
         </Routes>
