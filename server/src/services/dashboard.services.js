@@ -40,7 +40,6 @@ const getDashboardData = async () => {
 
         recentAlerts: alerts.slice(0, 10)
     };
-
     return dashboard;
 };
 

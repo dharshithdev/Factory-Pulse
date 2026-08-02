@@ -116,7 +116,7 @@ function AlertTable({ alerts }) {
                                             "bg-blue-500"
                                         } ${getStatusDot(alert.severity)}`}></div>
                                         <span className="text-white font-['Segoe_UI','Arial',sans-serif] text-xs font-semibold">
-                                            {alert.machine.machineCode}
+                                            {alert.machine?.machineCode || "No Alert"}
                                         </span>
                                     </div>
                                 </td>
