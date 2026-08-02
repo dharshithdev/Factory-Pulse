@@ -133,13 +133,6 @@ function Home() {
           <div className="relative p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
               <div className="flex-1">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#2a4a6a]/30 backdrop-blur-sm border border-[#4a9aff]/20 rounded-lg mb-4">
-                  <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
-                  <span className="text-[10px] text-[#8a9aaa] font-['Segoe_UI','Arial',sans-serif] font-semibold uppercase tracking-wider">
-                    System Online
-                  </span>
-                </div>
-                
                 <h1 className="text-4xl md:text-5xl font-bold text-white font-['Segoe_UI','Arial',sans-serif] tracking-tight leading-tight">
                   Smart Manufacturing
                   <br />

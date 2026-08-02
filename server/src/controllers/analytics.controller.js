@@ -6,7 +6,8 @@ const getOverview = async (req, res, next) => {
     try {
 
         const overview = await analyticsService.getOverview();
-
+        console.log(req.admin);
+        
         res.status(200).json({
             success: true,
             data: overview

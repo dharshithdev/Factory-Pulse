@@ -9,6 +9,9 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import socket from "./socket/socket";
 import Home from "./pages/Home";
 import NotFound from "./pages/404";
+import Settings from "./pages/Settings";
+import Production from "./pages/Production";
+import System from "./pages/System";
 
 function App() {
 
@@ -79,6 +82,32 @@ function App() {
                 }
             />
 
+            <Route
+                path="/settings"
+                element={
+                    <ProtectedRoute>
+                        <Settings />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/production"
+                element={
+                    <ProtectedRoute>
+                        <Production />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/system"
+                element={
+                    <ProtectedRoute>
+                        <System />
+                    </ProtectedRoute>
+                }
+            />
             <Route
                 path="*"
                 element={<NotFound />}
