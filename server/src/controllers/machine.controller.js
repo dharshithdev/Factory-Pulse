@@ -58,7 +58,7 @@ const updateMachine = async (req, res, next) => {
 const deleteMachine = async (req, res, next) => {
     try {
         await machineService.deleteMachine(req.params.id);
-
+        console.log('Del 1');
         res.status(200).json({
             success: true,
             message: "Machine deleted successfully."

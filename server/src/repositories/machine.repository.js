@@ -54,6 +54,7 @@ const toggleMachineStatus = async (id) => {
 };
 
 const deleteById = async (id) => {
+    console.log("Del 3");
     return await Machine.findByIdAndDelete(id);
 };
 

@@ -11,9 +11,9 @@ router.use(protect);
 
 router.post("/", validate(createMachineSchema), machineController.createMachine);
 router.get("/", machineController.getAllMachines);
-router.get("/:id", validateObjectId, machineController.getMachineById);
-router.put("/:id", validateObjectId, validate(updateMachineSchema), machineController.updateMachine);
-router.delete("/:id", validateObjectId, machineController.deleteMachine);
-router.patch("/:id/toggle", validateObjectId, machineController.toggleMachineStatus);
+router.patch("/:id/toggle", validateObjectId("id"), machineController.toggleMachineStatus);
+router.get("/:id", validateObjectId("id"), machineController.getMachineById);
+router.put("/:id", validateObjectId("id"), validate(updateMachineSchema), machineController.updateMachine);
+router.delete("/:id", validateObjectId("id"), machineController.deleteMachine);
 
 module.exports = router;

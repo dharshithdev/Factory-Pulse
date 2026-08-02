@@ -38,7 +38,6 @@ const updateMachine = async (id, updateData) => {
     if (!machine) {
         throw new Error("Machine not found.");
     }
-
     if (updateData.machineCode) {
         throw new Error("Machine code cannot be updated.");
     }
@@ -52,7 +51,7 @@ const deleteMachine = async (id) => {
     if (!machine) {
         throw new Error("Machine not found.");
     }
-
+    console.log('Del 2');
     return await machineRepository.deleteById(id);
 };
 
