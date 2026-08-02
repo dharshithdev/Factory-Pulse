@@ -34,12 +34,16 @@ const getMachineById = async (id) => {
 
 const updateMachine = async (id, updateData) => {
     const machine = await machineRepository.findById(id);
+    console.log(updateData);
 
     if (!machine) {
         throw new Error("Machine not found.");
     }
+
+    delete updateData.machineCode;
+
     if (updateData.machineCode) {
-        throw new Error("Machine code cannot be updated.");
+        throw new Error("Machine code cannot be updatedd.");
     }
 
     return await machineRepository.updateById(id, updateData);

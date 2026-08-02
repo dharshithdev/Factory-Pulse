@@ -27,8 +27,6 @@ export const toggleMachineStatus = async (id) => {
 };
 
 export const deleteMachine = async (id) => {
-    console.log("Delete request")
     const response = await api.delete(`/machines/${id}`);
-    console.log('--> ', response.data.data);
     return response.data.data;
 };
