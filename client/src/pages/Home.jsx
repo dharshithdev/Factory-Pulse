@@ -30,6 +30,7 @@ function Home() {
     const loadStats = async () => {
       try {
         //const data = await getDashboard();
+        const data = {};
         setStats({
           totalMachines: data.machineSummary?.total || 10,
           activeMachines: data.machineSummary?.running || 8,
