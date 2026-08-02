@@ -176,21 +176,22 @@ function Navbar() {
             </div>
 
             {/* Add animation keyframes */}
-            <style jsx>{`
-                @keyframes slideDown {
-                    from {
-                        opacity: 0;
-                        transform: translateY(-8px) scale(0.98);
-                    }
-                    to {
-                        opacity: 1;
-                        transform: translateY(0) scale(1);
-                    }
-                }
-                .animate-slideDown {
-                    animation: slideDown 0.15s ease-out;
-                }
-            `}</style>
+            <style>{`
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-8px) scale(0.98);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    .animate-slideDown {
+        animation: slideDown 0.15s ease-out;
+    }
+`}</style>
         </header>
     );
 }
