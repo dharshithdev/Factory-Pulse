@@ -29,12 +29,12 @@ function Home() {
   useEffect(() => {
     const loadStats = async () => {
       try {
-        const data = await getDashboard();
+        //const data = await getDashboard();
         setStats({
-          totalMachines: data.machineSummary?.total || 0,
-          activeMachines: data.machineSummary?.running || 0,
-          totalProduction: data.production?.totalProduction || 0,
-          activeAlerts: data.alerts?.active || 0
+          totalMachines: data.machineSummary?.total || 10,
+          activeMachines: data.machineSummary?.running || 8,
+          totalProduction: data.production?.totalProduction || 1200,
+          activeAlerts: data.alerts?.active || 1
         });
       } catch (error) {
         console.error("Error loading dashboard stats:", error);
