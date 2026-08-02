@@ -3,7 +3,7 @@
 module.exports = {
     INTERVAL: 30000,
 
-    API_URL: "http://localhost:5000/api/v1/sensor-readings",
+    API_URL: `${process.env.API_URL}/api/v1/sensor-readings`,
 
     STATUS: {
         RUNNING: "Running",

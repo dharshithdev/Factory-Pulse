@@ -42,5 +42,3 @@ const startSimulator = () => {
 };
 
 module.exports = startSimulator;
-
-module.exports = startSimulator;
