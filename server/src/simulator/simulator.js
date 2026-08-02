@@ -24,7 +24,7 @@ const runSimulator = async () => {
             console.error(
                 `${machine.machineCode} failed:`,
                 error.message
-            );
+            );  
         }
     }
 };
@@ -32,7 +32,15 @@ const runSimulator = async () => {
 const startSimulator = () => {
     console.log("FactoryPulse Sensor Simulator Started");
     runSimulator();
-    setInterval(runSimulator, config.INTERVAL);
+    const interval = setInterval(runSimulator, config.INTERVAL);
+    if (process.env.NODE_ENV === "production") {
+        setTimeout(() => {
+            clearInterval(interval);
+            console.log("FactoryPulse Simulator Stopped");
+        }, 3 * 60 * 1000);
+    }
 };
+
+module.exports = startSimulator;
 
 module.exports = startSimulator;
